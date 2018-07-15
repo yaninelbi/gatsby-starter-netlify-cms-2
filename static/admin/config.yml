@@ -6,43 +6,6 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "src/pages/blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
-
-  - name: "pages"
-    label: "Pages"
-    files:
-      - file: "src/pages/about/index.md"
-        label: "About"
-        name: "about"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
-      - file: "src/pages/products/index.md"
-        label: "Products Page"
-        name: "products"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
-          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-          - {label: Full_image, name: full_image, widget: image}
-          - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
 
   - name: products
     label: Products
@@ -73,16 +36,6 @@ collections:
             collection: "productCategories"
             searchFields: ["title"]
             valueField: "title"
-      - label: "Meta"
-        required: false
-        name: "meta"
-        widget: "object"
-        fields:
-          - {label: Title, name: title, widget: string, required: false}
-          - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
-          - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
-          - {label: Noindex, name: noindex, widget: boolean, required: false}
-
 
   - name: productCategories
     label: Product Category
@@ -93,6 +46,17 @@ collections:
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
       - {label: Title, name: title, widget: string}
+
+  - name: store
+    label: Store
+    editor:
+      preview: false
+    folder: content/stores
+    slug: "{{slug}}"
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {label: Title, name: title, widget: string}
+      - {label: Image, name: image, widget: image, required: false}
       - label: "Meta"
         required: false
         name: "meta"
@@ -102,28 +66,3 @@ collections:
           - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
           - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
           - {label: Noindex, name: noindex, widget: boolean, required: false}
-
-
-  - name: "settings"
-    label: "Settings"
-    delete: false # Prevent users from deleting documents in this collection
-    editor:
-      preview: false
-    files:
-      - file: "content/settings/global.yml"
-        label: "Global Settings"
-        name: "global-settings"
-        fields:
-          - {label: Site Title, name: siteTitle, widget: string}
-          - {label: Logo, name: siteLogo, widget: image, required: false}
-          - {label: Site Url, name: siteUrl, widget: string, required: false}
-          - {label: Site Description, name: siteDescription, widget: text, required: false}
-          - label: Social Media Card
-            name: socialMediaCard
-            widget: object
-            fields:
-              - {label: Image, name: image, widget: image, required: false}
-              - {label: Twitter Site Account, name: twitterSiteAccount, widget: string, required: false}
-              - {label: Twitter Creator Account, name: twitterCreatorAccount, widget: string, required: false}
-          - {label: Header Meta / Scripts, name: headerScripts, widget: text, required: false}
-          - {label: Enable Service Worker Pre-Cache, name: enableServiceWorker, widget: boolean, required: false}
