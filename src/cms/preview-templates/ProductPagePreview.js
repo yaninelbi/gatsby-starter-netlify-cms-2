@@ -5,7 +5,7 @@ import { ProductPageTemplate } from '../../templates/product-page'
 const ProductPagePreview = ({ entry, getAsset }) => {
   return (
     <ProductPageTemplate
-      image={getAsset(entry.getIn(['data', 'image', 'image']))}
+      image={getAsset(entry.getIn(['data', 'productFeaturedImage']))}
       title={entry.getIn(['data', 'title'])}
     />
   )
