@@ -36,6 +36,13 @@ collections:
             collection: "productCategories"
             searchFields: ["title"]
             valueField: "title"
+            fields:
+          - label: "Brand"
+            name: "brand"
+            widget: "relation"
+            collection: "productBrand"
+            searchFields: ["title"]
+            valueField: "title"
 
   - name: productCategories
     label: Product Category
@@ -49,11 +56,11 @@ collections:
       - {label: "Show", name: "show", widget: "boolean", default: true}
 
 
-  - name: store
-    label: Store
+  - name: productBrands
+    label: Brand
     editor:
       preview: false
-    folder: content/stores
+    folder: content/brands
     slug: "{{slug}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
