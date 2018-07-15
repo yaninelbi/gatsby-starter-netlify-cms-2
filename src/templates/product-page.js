@@ -17,11 +17,10 @@ export const ProductPageTemplate = ({
     >
       {title}
     </h2>
-    <div> 
+    <div> Image:<br/>>
     <img
       style={{ borderRadius: '5px' }}
-      src={image.image}
-      alt={image.alt}
+      src={image}
     />
     </div>
   </div>
