@@ -25,6 +25,12 @@ collections:
       - {label: Product Featured Image, name: productFeaturedImage, widget: image, required: false}
       - {label: Sold, name: sold, widget: number}
       - {label: Target, name: target, widget: number}
+      - label: "Brand"
+        name: "brand"
+        widget: "relation"
+        collection: "brands"
+        searchFields: ["title"]
+        valueField: "title"
       - label: "Categories"
         name: "categories"
         widget: "list"
@@ -34,13 +40,6 @@ collections:
             name: "category"
             widget: "relation"
             collection: "productCategories"
-            searchFields: ["title"]
-            valueField: "title"
-            fields:
-          - label: "Brand"
-            name: "brand"
-            widget: "relation"
-            collection: "productBrand"
             searchFields: ["title"]
             valueField: "title"
 
@@ -56,7 +55,7 @@ collections:
       - {label: "Show", name: "show", widget: "boolean", default: true}
 
 
-  - name: productBrands
+  - name: brands
     label: Brand
     editor:
       preview: false
