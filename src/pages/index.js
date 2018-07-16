@@ -3,7 +3,13 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 
 export default class IndexPage extends React.Component {
+
+  componentDidMount(){
+    console.log('componentDidMount', this.props);
+  }
+
   render() {
+    console.log('props', this.props);
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
 
